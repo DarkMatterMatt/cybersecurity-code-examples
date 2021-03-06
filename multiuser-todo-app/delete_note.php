@@ -16,8 +16,8 @@ include('./db.php');
 $user = $_SESSION['user'];
 $noteId = $_GET['note_id'];
 
-// SQL injection in id, id in parentheses so that only current user's notes can be deleted.
+// SQL injection in id
 dbExec("
     DELETE FROM notes
-    WHERE user = $user AND (id = $noteId)
+    WHERE user = $user AND (id = \"$noteId\")
 ");
