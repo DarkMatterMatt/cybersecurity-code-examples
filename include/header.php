@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <style>
-            .main {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
-        <div class="main">
+        <div class="w3-display-middle">
