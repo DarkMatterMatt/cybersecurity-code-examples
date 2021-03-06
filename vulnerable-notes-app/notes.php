@@ -3,7 +3,6 @@
 
 <?php
 include('./db.php');
-session_start();
 
 if (!isset($_GET['user'])) {
     header('Location: index.php');

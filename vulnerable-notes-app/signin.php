@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($res) {
         // save which user we are
-        session_start();
         $_SESSION['user'] = $user;
 
         // have signed up, redirect to notes page.

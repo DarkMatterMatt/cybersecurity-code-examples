@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('./db.php');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     print 'Invalid request method. This file only accepts POST request.';
@@ -10,8 +10,6 @@ if (!isset($_SESSION['user'])) {
     print "Must log in first.";
     die;
 }
-
-include('./db.php');
 
 $user = $_SESSION['user'];
 $content = file_get_contents('php://input');
