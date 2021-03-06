@@ -37,6 +37,8 @@ $res = dbQuery("SELECT * FROM notes WHERE user = '$user'");
     </form>
 <?php endif; ?>
 
+<p><a href="signout.php">Sign out</a></p>
+
 <script>
     function escapeHtml(str) {
         const $span = document.createElement("span"); 
