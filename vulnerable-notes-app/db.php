@@ -7,10 +7,9 @@ if (isset($_SESSION['db'])) {
     $db = new SQLite3('multiuser-todo-app.' . $_SESSION['db'] . '.db');
 }
 else {
-    $db_rand = bin2hex(random_bytes(16));
-    $_SESSION['db'] = $db_rand;
+    $_SESSION['db'] = md5(session_id());
     
-    $db = new SQLite3("multiuser-todo-app.$db_rand.db");
+    $db = new SQLite3("multiuser-todo-app.$_SESSION[db].db");
     dbReset();
 }
 
