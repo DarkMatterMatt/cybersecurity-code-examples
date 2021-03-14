@@ -1,6 +1,3 @@
-<?php include('../include/header.php'); ?>
-<!--------------------------------------->
-
 <?php
 include('./db.php');
 
@@ -11,14 +8,25 @@ if (!isset($_GET['user'])) {
 
 $user = $_GET['user'];
 
+if (!isset($_SESSION['user'])) {
+    header('Location: signin.php');
+}
+else if ($_SESSION['user'] != intval($user)) {
+    // broken authorization check
+    header('Location: notes.php?user=' . $_SESSION['user']);
+}
+
 // vulnerable to SQL injection
 $res = dbQuery("SELECT * FROM notes WHERE user = '$user'");
-?>
+
+//--------------------------------------->
+include('../include/header.php'); ?>
+<!--------------------------------------->
 
 <h1>Notes for User #<?php print $user ?></h1>
 
 <!-- show all the user's notes -->
-<?php while ($note = $res->fetchArray()): ?>
+<?php while ($res && $note = $res->fetchArray()): ?>
     <div class="w3-card w3-container">
         <h3>Note #<?php print $note['id'] ?></h3>
         <p><?php print $note['content'] ?></p>
@@ -26,15 +34,12 @@ $res = dbQuery("SELECT * FROM notes WHERE user = '$user'");
     </div>
 <?php endwhile; ?>
 
-<?php // this is a bit weird, but we won't show the 'add a note' input when viewing the notes of a different user ?>
-<?php if ($user == ($_SESSION['user'] ?? null)): ?>
-    <form class="w3-card w3-container" onsubmit="addNote(); return false">
-        <h3>Add a note</h3>
-        <textarea id="content" style="width: 400px; height: 150px"></textarea>
-        <br>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-<?php endif; ?>
+<form class="w3-card w3-container" onsubmit="addNote(); return false">
+    <h3>Add a note</h3>
+    <textarea id="content" style="width: 400px; height: 150px"></textarea>
+    <br>
+    <p><input type="submit" value="Submit"></p>
+</form>
 
 <p><a href="signout.php">Sign out</a></p>
 
