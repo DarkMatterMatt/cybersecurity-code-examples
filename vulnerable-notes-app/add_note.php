@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 if (!isset($_SESSION['user'])) {
-    print "Must log in first.";
+    print 'Must log in first.';
     die;
 }
 

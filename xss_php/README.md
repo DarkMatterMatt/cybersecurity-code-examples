@@ -8,7 +8,7 @@ Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious s
 
 ## Scripts
 
-[bad.php](./bad.php), simply echoes the user's name to the HTML.
+[bad.php](./bad.php), simply prints the user's name to the HTML.
 
 [bad-fix.php](./bad-fix.php), attempts to escape (convert special characters in) the user's name, but does so inadequately.
 

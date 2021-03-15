@@ -11,11 +11,11 @@
         $name = str_replace("<", "&lt;", $name);
     }
     
-    echo "Hello " . $name;
+    print 'Hello ' . $name;
 ?>
 <form>
     <!-- vulnerable to Cross Site Scripting (XSS) -->
-    Enter your name: <input name="name" value="<?php echo $name; ?>">
+    Enter your name: <input name="name" value="<?php print $name; ?>">
     <input type="submit" value="Submit">
 </form>
 

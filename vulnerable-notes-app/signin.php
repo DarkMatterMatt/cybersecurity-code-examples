@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="post" class="w3-card w3-container">
     <h1>Sign in</h1>
     <?php if ($errorMessage): ?>
-        <p class="w3-text-red">Error: <?php echo $errorMessage; ?></p>
+        <p class="w3-text-red">Error: <?php print $errorMessage; ?></p>
     <?php endif; ?>
     <p>User ID: <input name="user_id" type="number" required></p>
     <p>Password: <input name="password" type="password" required></p>

@@ -14,12 +14,12 @@ foreach ($exclude as $ex) {
 }
 
 // display a title on the top of the listing
-print "<h1>" . $_SERVER['REQUEST_URI'] . "</h1>";
+print '<h1>' . $_SERVER['REQUEST_URI'] . '</h1>';
 
 // if the array of files isn't empty
 if (!empty($files)) {
     // open unordered list tag
-    print "<ul>";
+    print '<ul>';
 
     // loop through directories
     foreach ($files as $file) {
@@ -37,9 +37,9 @@ if (!empty($files)) {
     }
 
     // close unordered list tag
-    print "</ul>";
+    print '</ul>';
 }
 else {
     // display empty directory message
-    print "<p>This folder contains no files.</p>";
+    print '<p>This folder contains no files.</p>';
 }

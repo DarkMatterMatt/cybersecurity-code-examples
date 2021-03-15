@@ -12,7 +12,7 @@
     }
     
     // vulnerable to Cross Site Scripting (XSS)
-    echo "Hello " . $name;
+    print 'Hello ' . $name;
 ?>
 <form>
     Enter your name: <input name="name">
