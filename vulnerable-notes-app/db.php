@@ -15,14 +15,14 @@ else {
 
 function dbQuery($sql) {
     global $db;
-    // print what is happening in a HTML comment (to help learning SQL injection)
+    // print what is happening in a HTML comment (to help learning SQL injection), also vulnerable to XSS
     print '<!-- querying: ' . $sql . ' -->' . PHP_EOL;
     return $db->query($sql);
 }
 
 function dbExec($sql) {
     global $db;
-    // print what is happening in a HTML comment (to help learning SQL injection)
+    // print what is happening in a HTML comment (to help learning SQL injection), also vulnerable to XSS
     print '<!-- executing: ' . $sql . ' -->' . PHP_EOL;
     return $db->exec($sql);
 }
