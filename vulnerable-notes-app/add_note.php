@@ -27,5 +27,6 @@ $stmt = $db->prepare('
 $stmt->bindValue(':user', $user, SQLITE3_INTEGER);
 $stmt->bindValue(':content', $content, SQLITE3_TEXT);
 
-print 'Executing: ' . $stmt->getSQL(true) . PHP_EOL;
+// print 'Executing: ' . $stmt->getSQL(true) . PHP_EOL;
+print 'Executing: INSERT INTO notes (user, content) VALUES (:user, :content))' . PHP_EOL;
 $stmt->execute();

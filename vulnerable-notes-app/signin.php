@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindValue(':id', $user, SQLITE3_INTEGER);
     $stmt->bindValue(':password', $password, SQLITE3_TEXT);
 
-    print '<!-- Executing: ' . $stmt->getSQL(false) . ' -->' . PHP_EOL;
+    // print '<!-- Executing: ' . $stmt->getSQL(false) . ' -->' . PHP_EOL;
+    print '<!-- Executing: SELECT id FROM users WHERE id = :id AND password = :password -->' . PHP_EOL;
     $res = $stmt->execute()->fetchArray();
 
     if ($res) {

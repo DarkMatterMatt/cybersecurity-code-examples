@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ');
         $stmt->bindValue(':password', $_POST['password'], SQLITE3_TEXT);
 
-        print 'Executing: ' . $stmt->getSQL(false) . PHP_EOL;
+        // print 'Executing: ' . $stmt->getSQL(false) . PHP_EOL;
+        print 'Executing: INSERT INTO users (password) VALUES (:password)' . PHP_EOL;
         $stmt->execute();
 
         $user = $db->lastInsertRowID();
