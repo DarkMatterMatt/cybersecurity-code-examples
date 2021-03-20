@@ -1,5 +1,9 @@
 <?php
 
+// show errors to help with SQL injection
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 // every session has a separate database instance
