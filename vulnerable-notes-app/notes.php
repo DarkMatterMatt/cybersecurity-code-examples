@@ -16,12 +16,13 @@ else if ($_SESSION['user'] != intval($user)) {
     header('Location: notes.php?user=' . $_SESSION['user']);
 }
 
+//--------------------------------------->
+include('../include/header.php');
+//--------------------------------------->
+
 // vulnerable to SQL injection
 $res = dbQuery("SELECT * FROM notes WHERE user = '$user'");
-
-//--------------------------------------->
-include('../include/header.php'); ?>
-<!--------------------------------------->
+?>
 
 <h1>Notes for User #<?php print $user ?></h1>
 
