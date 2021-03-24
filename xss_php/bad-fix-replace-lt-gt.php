@@ -9,6 +9,7 @@
 
         // does this fix the vulnerability?
         $name = str_replace("<", "&lt;", $name);
+        $name = str_replace(">", "&gt;", $name);
     }
     
     print 'Hello ' . $name;
