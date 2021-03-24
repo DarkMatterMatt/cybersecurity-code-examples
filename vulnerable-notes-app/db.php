@@ -12,6 +12,7 @@ if (isset($_SESSION['db'])) {
 }
 else {
     $_SESSION['db'] = md5(session_id());
+    $_SESSION['db_user0_password'] = base64_encode(random_bytes(9));
     
     $db = new SQLite3("multiuser-todo-app.$_SESSION[db].db");
     dbReset();
@@ -43,13 +44,12 @@ function dbReset() {
         )
     ');
     dbExec('
-        INSERT INTO users (
-            id,
-            password
-        ) VALUES (
-            0,
-            "password123"
-        )
+        INSERT INTO users (password)
+        VALUES ("' . $_SESSION['db_user0_password'] . '")
+    ');
+    dbExec('
+        INSERT INTO users (password)
+        VALUES ("user2")
     ');
 
     // notes
@@ -64,14 +64,19 @@ function dbReset() {
         )
     ');
     dbExec('
-        INSERT INTO notes (
-            id,
-            user,
-            content
-        ) VALUES (
-            0,
-            0,
-            "The first note"
-        )
+        INSERT INTO notes (user, content)
+        VALUES (1, "The first note")
+    ');
+    dbExec('
+        INSERT INTO notes (user, content)
+        VALUES (1, "I wonder if it\'s safe to store my super secret notes here?")
+    ');
+    dbExec('
+        INSERT INTO notes (user, content)
+        VALUES (2, "My first note")
+    ');
+    dbExec('
+        INSERT INTO notes (user, content)
+        VALUES (2, "Just testing, my password is \'user2\'")
     ');
 }
